@@ -42,7 +42,16 @@ def main():
             #mostrar pixel por pixel 
             # print("[" + str(x) + "," + str(y) + "]" + str(obj_img[y][x]))
             # input()
-    cv.imwrite("cat_modificado.png", obj_img)
+    
+    #criar ROI
+    roi_img = obj_img[196:196 + 60, 499: 499 + 60]
+    #colar ROI na imagem original
+    obj_img[161 : 161 + roi_img.shape[0], 450 : 450 + roi_img.shape[1]] = roi_img
+    showImage(obj_img)
+    #roi_img.shape[altura, largura] = busca do recorte
+    
+    #cv.imwrite("cat_modificado.png", obj_img)
+    #showImage(roi_img)
     #showImage(obj_img)
 
 main()
